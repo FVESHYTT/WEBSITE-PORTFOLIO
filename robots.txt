@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://fvestarez.netlify.app/sitemap.xml
