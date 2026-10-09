@@ -6,7 +6,7 @@
   <title>VLAN Trunking and Router-on-a-Stick Lab | Fritz Vincent Estarez</title>
   <meta name="description" content="Cisco Packet Tracer lab: two switches, two VLANs and a router using 802.1Q trunking and router-on-a-stick. Configuration, test results and downloads.">
   <meta name="author" content="Fritz Vincent D. Estarez">
-  <meta name="theme-color" content="#050505">
+  <meta name="theme-color" content="#070E1B">
   <link rel="canonical" href="https://fvestarez.netlify.app/vlan-trunking.html">
   <meta property="og:type" content="article">
   <meta property="og:title" content="VLAN Trunking and Router-on-a-Stick Lab | Fritz Vincent Estarez">
@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://fvestarez.netlify.app/vlan-trunking.html">
   <meta property="og:image" content="https://fvestarez.netlify.app/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050505'/%3E%3Ctext x='32' y='43' font-size='30' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='%23D7FFE0'%3EFE%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1B3A'/%3E%3Ctext x='32' y='43' font-size='30' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='%2334D399'%3EFE%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -65,6 +65,8 @@
 <body>
   <a class="skip" href="#main">Skip to main content</a>
 
+  <div class="side-bg" aria-hidden="true"><canvas id="net-side"></canvas></div>
+
   <aside class="sidebar">
     <div class="profile">
       <div class="avatar">
@@ -83,13 +85,7 @@
         <li><a href="index.html#contact"><i class="ph ph-envelope-simple" aria-hidden="true"></i>Contact</a></li>
       </ul>
     </nav>
-    <div class="textsize" role="group" aria-label="Text size">
-      <button type="button" id="smaller" aria-label="Make text smaller"><i class="ph ph-text-aa" aria-hidden="true"></i>-</button>
-      <button type="button" id="larger" aria-label="Make text larger"><i class="ph ph-text-aa" aria-hidden="true"></i>+</button>
-    </div>
   </aside>
-
-  <aside class="rail" aria-hidden="true"><canvas id="net"></canvas></aside>
 
   <main id="main" class="project-page">
     <header class="page-head">

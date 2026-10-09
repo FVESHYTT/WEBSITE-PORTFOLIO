@@ -6,7 +6,7 @@
   <title>Fritz Vincent Estarez | Network Administrator in Manila</title>
   <meta name="description" content="Fritz Vincent D. Estarez is a Network Administrator in Manila, Philippines. Network setup, Windows Server and Active Directory, VMware labs, and troubleshooting.">
   <meta name="author" content="Fritz Vincent D. Estarez">
-  <meta name="theme-color" content="#050505">
+  <meta name="theme-color" content="#070E1B">
   <!-- Replace https://fvestarez.netlify.app with your real URL before publishing -->
   <link rel="canonical" href="https://fvestarez.netlify.app/">
   <meta property="og:type" content="website">
@@ -15,7 +15,7 @@
   <meta property="og:url" content="https://fvestarez.netlify.app/">
   <meta property="og:image" content="https://fvestarez.netlify.app/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050505'/%3E%3Ctext x='32' y='43' font-size='30' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='%23D7FFE0'%3EFE%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1B3A'/%3E%3Ctext x='32' y='43' font-size='30' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='%2334D399'%3EFE%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -38,6 +38,8 @@
 <body>
   <a class="skip" href="#main">Skip to main content</a>
 
+  <div class="side-bg" aria-hidden="true"><canvas id="net-side"></canvas></div>
+
   <aside class="sidebar">
     <div class="profile">
       <div class="avatar">
@@ -57,18 +59,11 @@
         <li><a href="#contact"><i class="ph ph-envelope-simple" aria-hidden="true"></i>Contact</a></li>
       </ul>
     </nav>
-
-    <div class="textsize" role="group" aria-label="Text size">
-      <button type="button" id="smaller" aria-label="Make text smaller"><i class="ph ph-text-aa" aria-hidden="true"></i>-</button>
-      <button type="button" id="larger" aria-label="Make text larger"><i class="ph ph-text-aa" aria-hidden="true"></i>+</button>
-    </div>
   </aside>
-
-  <aside class="rail" aria-hidden="true"><canvas id="net"></canvas></aside>
 
   <main id="main">
     <section id="home" class="hero" aria-labelledby="h1">
-      <h1 id="h1">Networks that stay up.</h1>
+      <h1 id="h1">Networks that <span class="hl">stay up.</span></h1>
       <p class="lead">I'm Fritz, a network administrator in Manila. I keep routers, servers and user accounts running, and I build VMware labs to keep learning.</p>
       <a class="btn" href="#contact"><i class="ph ph-paper-plane-tilt" aria-hidden="true"></i>Get in touch</a>
 
@@ -86,7 +81,6 @@
             <li><i class="ph ph-network" aria-hidden="true"></i>GNS3</li>
           </ul>
         </div>
-        <button type="button" class="pause" id="pause" aria-pressed="false"><i class="ph ph-pause" aria-hidden="true"></i><span>Pause animations</span></button>
       </div>
     </section>
 
