@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VLAN Trunking and Router-on-a-Stick Lab | Fritz Vincent Estarez</title>
+  <meta name="description" content="Cisco Packet Tracer lab: two switches, two VLANs and a router using 802.1Q trunking and router-on-a-stick. Configuration, test results and downloads.">
+  <meta name="author" content="Fritz Vincent D. Estarez">
+  <meta name="theme-color" content="#050505">
+  <link rel="canonical" href="https://fvestarez.netlify.app/vlan-trunking.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="VLAN Trunking and Router-on-a-Stick Lab | Fritz Vincent Estarez">
+  <meta property="og:description" content="Cisco Packet Tracer lab: two switches, two VLANs and a router using 802.1Q trunking and router-on-a-stick. Configuration, test results and downloads.">
+  <meta property="og:url" content="https://fvestarez.netlify.app/vlan-trunking.html">
+  <meta property="og:image" content="https://fvestarez.netlify.app/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050505'/%3E%3Ctext x='32' y='43' font-size='30' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='%23D7FFE0'%3EFE%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
+  <script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "CreativeWork",
+   "name": "VLAN Trunking and Router-on-a-Stick Lab",
+   "description": "Cisco Packet Tracer lab: two switches, two VLANs and a router using 802.1Q trunking and router-on-a-stick. Configuration, test results and downloads.",
+   "url": "https://fvestarez.netlify.app/vlan-trunking.html",
+   "image": "https://fvestarez.netlify.app/projects/vlan-trunking-topology.jpg",
+   "author": {
+    "@type": "Person",
+    "name": "Fritz Vincent D. Estarez",
+    "url": "https://fvestarez.netlify.app/"
+   },
+   "keywords": "VLANs, 802.1Q trunking, Router-on-a-Stick, Cisco Packet Tracer"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://fvestarez.netlify.app/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Projects",
+     "item": "https://fvestarez.netlify.app/#projects"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "VLAN Trunking and Router-on-a-Stick Lab",
+     "item": "https://fvestarez.netlify.app/vlan-trunking.html"
+    }
+   ]
+  }
+ ]
+}</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+
+  <aside class="sidebar">
+    <div class="profile">
+      <div class="avatar">
+        <span aria-hidden="true">FE</span>
+        <img src="profile.jpg" alt="Portrait of Fritz Vincent Estarez, Network Administrator" width="400" height="400" onerror="this.remove()">
+      </div>
+      <p class="name">Fritz Vincent Estarez</p>
+      <p class="role">Network Administrator</p>
+    </div>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="index.html#home"><i class="ph ph-house" aria-hidden="true"></i>Home</a></li>
+        <li><a href="index.html#projects" class="active" aria-current="page"><i class="ph ph-folder-open" aria-hidden="true"></i>Projects</a></li>
+        <li><a href="index.html#services"><i class="ph ph-wrench" aria-hidden="true"></i>Services</a></li>
+        <li><a href="index.html#about"><i class="ph ph-user" aria-hidden="true"></i>About</a></li>
+        <li><a href="index.html#contact"><i class="ph ph-envelope-simple" aria-hidden="true"></i>Contact</a></li>
+      </ul>
+    </nav>
+    <div class="textsize" role="group" aria-label="Text size">
+      <button type="button" id="smaller" aria-label="Make text smaller"><i class="ph ph-text-aa" aria-hidden="true"></i>-</button>
+      <button type="button" id="larger" aria-label="Make text larger"><i class="ph ph-text-aa" aria-hidden="true"></i>+</button>
+    </div>
+  </aside>
+
+  <aside class="rail" aria-hidden="true"><canvas id="net"></canvas></aside>
+
+  <main id="main" class="project-page">
+    <header class="page-head">
+      <a class="back" href="index.html#projects"><i class="ph ph-arrow-left" aria-hidden="true"></i>Back to projects</a>
+      <h1>VLAN Trunking and Router-on-a-Stick Lab</h1>
+      <p class="lead">Two switches, two VLANs and one router: same-VLAN PCs reach each other across a trunk, and the router connects the two VLANs.</p>
+      <ul class="tags" aria-label="Skills used"><li>VLANs</li><li>802.1Q trunking</li><li>Router-on-a-Stick</li><li>Cisco Packet Tracer</li></ul>
+      <div class="actions">
+        <a class="btn" href="#downloads"><i class="ph ph-download-simple" aria-hidden="true"></i>Download files</a>
+        <a class="btn outline" href="mailto:fvestarez22@gmail.com?subject=Question%20about%20the%20VLAN%20Trunking%20lab"><i class="ph ph-envelope-simple" aria-hidden="true"></i>Email me about this project</a>
+      </div>
+      <div class="facts"><div class="fact"><span>Tool</span><strong>Cisco Packet Tracer</strong></div><div class="fact"><span>Devices</span><strong>1 router, 2 switches, 4 PCs</strong></div><div class="fact"><span>VLANs</span><strong>2 (10 and 20)</strong></div><div class="fact"><span>Routing</span><strong>Router-on-a-Stick</strong></div></div>
+    </header>
+
+    <div class="stack">
+<section class="box" id="overview" aria-labelledby="h-overview">
+  <h2 id="h-overview"><i class="ph ph-info" aria-hidden="true"></i>Overview</h2>
+  <p>Two switches, two VLANs and one router. PCs in the same VLAN reach each other across the trunk between the switches, and the router passes traffic between VLAN 10 and VLAN 20 using router-on-a-stick.</p>
+  <ul class="plain-list">
+    <li>Access ports carry one VLAN and connect the PCs.</li>
+    <li>Trunk ports carry several VLANs using 802.1Q tagging.</li>
+    <li>One physical router interface is split into sub-interfaces, one gateway per VLAN.</li>
+  </ul>
+  <p><strong>Traffic flow:</strong> PC, access port, VLAN, trunk, router, trunk, VLAN, destination.</p>
+</section>
+<section class="box" id="topology" aria-labelledby="h-topology">
+  <h2 id="h-topology"><i class="ph ph-graph" aria-hidden="true"></i>Topology and test results</h2>
+  <figure class="figure"><img src="projects/vlan-trunking-topology.jpg" width="1600" height="786" alt="Packet Tracer screenshot: Router1 connected to Switch0, which links to Switch1; PC01 and PC03 are in VLAN 10 Sales, PC02 and PC04 in VLAN 20. The Switch0 CLI shows trunking on Gig0/1 and Gig0/2, and PC01 pings 192.168.10.20 with 4 of 4 replies.">
+  <figcaption>Packet Tracer view with the Switch0 command line (<code>show interfaces trunk</code> and <code>show vlan brief</code>) and a ping from PC01.</figcaption></figure>
+</section>
+<section class="box" id="addressing" aria-labelledby="h-addressing">
+  <h2 id="h-addressing"><i class="ph ph-table" aria-hidden="true"></i>Addressing</h2>
+  <div class="tablewrap" tabindex="0" role="region" aria-label="VLAN assignment and IP address for each PC"><table><caption>VLAN assignment and IP address for each PC</caption><thead><tr><th scope="col">Device</th><th scope="col">VLAN</th><th scope="col">IP address</th></tr></thead><tbody><tr><td>PC01</td><td>10 (SALES)</td><td>192.168.10.10/24</td></tr><tr><td>PC03</td><td>10 (SALES)</td><td>192.168.10.20/24</td></tr><tr><td>PC02</td><td>20 (ENG)</td><td>192.168.20.10/24</td></tr><tr><td>PC04</td><td>20 (ENG)</td><td>192.168.20.20/24</td></tr></tbody></table></div><p class="note">Default gateways: VLAN 10 uses 192.168.10.1 and VLAN 20 uses 192.168.20.1.</p>
+</section>
+<section class="box" id="configuration" aria-labelledby="h-configuration">
+  <h2 id="h-configuration"><i class="ph ph-terminal-window" aria-hidden="true"></i>Configuration</h2>
+  <h3>Switch0: VLANs, access ports and trunks</h3>
+<pre tabindex="0" aria-label="Switch0: VLANs, access ports and trunks commands"><code>enable
+configure terminal
+vlan 10
+ name SALES
+vlan 20
+ name ENG
+interface fa0/1
+ switchport mode access
+ switchport access vlan 10
+interface fa0/2
+ switchport mode access
+ switchport access vlan 20
+interface gi0/1
+ switchport mode trunk
+interface gi0/2
+ switchport mode trunk
+end
+copy running-config startup-config</code></pre><h3>Switch1: VLANs, access ports and trunk</h3>
+<pre tabindex="0" aria-label="Switch1: VLANs, access ports and trunk commands"><code>enable
+configure terminal
+vlan 10
+ name SALES
+vlan 20
+ name ENG
+interface fa0/1
+ switchport mode access
+ switchport access vlan 10
+interface fa0/2
+ switchport mode access
+ switchport access vlan 20
+interface gi0/1
+ switchport mode trunk
+end
+copy running-config startup-config</code></pre><h3>Router1: router-on-a-stick</h3>
+<pre tabindex="0" aria-label="Router1: router-on-a-stick commands"><code>enable
+configure terminal
+interface g0/0/0
+ no shutdown
+interface g0/0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+interface g0/0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+end
+copy running-config startup-config</code></pre>
+</section>
+<section class="box" id="results" aria-labelledby="h-results">
+  <h2 id="h-results"><i class="ph ph-check-circle" aria-hidden="true"></i>Verification and results</h2>
+  <ul class="plain-list">
+    <li><code>show vlan brief</code> confirms VLANs 10 and 20 with the right ports.</li>
+    <li><code>show interfaces trunk</code> on Switch0 shows Gig0/1 and Gig0/2 as trunking with 802.1Q.</li>
+    <li><code>show ip interface brief</code> on the router shows Gi0/0/0, Gi0/0/0.10 and Gi0/0/0.20 as up/up.</li>
+    <li>From PC01, a ping to 192.168.10.20 (PC03, same VLAN, across the trunk) got 4 of 4 replies with 0% loss.</li>
+  </ul>
+  <h3>Connectivity tests I ran</h3>
+  <ul class="plain-list">
+    <li>From PC01: ping 192.168.10.1, ping 192.168.10.20, ping 192.168.20.10.</li>
+    <li>From PC02: ping 192.168.20.1, ping 192.168.20.20, ping 192.168.10.10.</li>
+  </ul>
+</section>
+<section class="box" id="learned" aria-labelledby="h-learned">
+  <h2 id="h-learned"><i class="ph ph-lightbulb" aria-hidden="true"></i>What I learned</h2>
+  <p>A trunk lets one cable carry many VLANs, and a router with sub-interfaces gives each VLAN its gateway.</p>
+  <ul class="plain-list">
+    <li>Use access ports for PCs and trunk ports between switches and routers.</li>
+    <li>Save the work with <code>copy running-config startup-config</code>.</li>
+    <li>Test from inside the VLAN first, then across VLANs.</li>
+  </ul>
+</section>
+<section class="box" id="downloads" aria-labelledby="h-downloads">
+  <h2 id="h-downloads"><i class="ph ph-download-simple" aria-hidden="true"></i>Downloads</h2>
+  <p>Take the lab notes with you. The Packet Tracer file opens in Cisco Packet Tracer.</p><ul class="dl"><li><a href="projects/vlan-trunking-lab.docx" download><i class="ph ph-file-doc" aria-hidden="true"></i><span><strong>VLAN trunking lab notes (Word)</strong><small>vlan-trunking-lab.docx · 18 KB</small></span></a></li><li><a href="projects/vlan-trunking-lab.pdf" download><i class="ph ph-file-pdf" aria-hidden="true"></i><span><strong>VLAN trunking lab notes (PDF)</strong><small>vlan-trunking-lab.pdf · 82 KB</small></span></a></li><li><a href="projects/vlan-trunking-lab.pkt" download><i class="ph ph-hard-drive" aria-hidden="true"></i><span><strong>Packet Tracer lab file (.pkt)</strong><small>vlan-trunking-lab.pkt · 45 KB</small></span></a></li></ul>
+</section>
+    </div>
+
+    <nav class="pager" aria-label="More projects"><a href="three-switch-vlan.html"><i class="ph ph-arrow-left" aria-hidden="true"></i>Previous: 3-Switch Hierarchical VLAN</a></nav>
+    <footer><p>&copy; 2026 Fritz Vincent D. Estarez</p></footer>
+  </main>
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 // Marquee pause (WCAG: moving content must be pausable)
 const marquee = document.getElementById('marquee');
 const pause = document.getElementById('pause');
-pause.addEventListener('click', () => {
+if (pause && marquee) pause.addEventListener('click', () => {
   const paused = marquee.classList.toggle('paused');
   window.animPaused = paused;
   pause.setAttribute('aria-pressed', paused);
@@ -22,9 +22,10 @@ document.getElementById('larger').addEventListener('click', () => { size = Math.
 document.getElementById('smaller').addEventListener('click', () => { size = Math.max(size - 12.5, 100); apply(); });
 
 // Sidebar highlight: follows scrolling, but a clicked link wins until you scroll yourself
-const links = [...document.querySelectorAll('nav a')];
+const links = [...document.querySelectorAll('nav a[href^="#"]')];
 const targets = [...document.querySelectorAll('main section[id], main article[id]')];
 let locked = false;
+if (targets.length) {
 
 function show(id) {
   links.forEach(l => {
@@ -54,6 +55,7 @@ links.forEach(l => l.addEventListener('click', () => {
 window.addEventListener('scroll', setActive, { passive: true });
 window.addEventListener('resize', setActive);
 setActive();
+}
 
 // Decorative network canvas: falling 0s and 1s plus drifting network nodes
 (function () {
@@ -131,4 +133,27 @@ setActive();
   new ResizeObserver(init).observe(cv);
   init();
   if (!reduce) requestAnimationFrame(loop);
+})();
+
+// Certificate viewer (uses the built-in dialog element; links still work without JavaScript)
+(function () {
+  const viewer = document.getElementById('viewer');
+  if (!viewer || typeof viewer.showModal !== 'function') return;
+  const img = document.getElementById('viewer-img');
+  const title = document.getElementById('viewer-title');
+  const dl = document.getElementById('viewer-dl');
+  let opener = null;
+  document.querySelectorAll('a[data-viewer]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    opener = a;
+    img.src = a.getAttribute('href');
+    img.alt = a.dataset.alt || '';
+    title.textContent = a.dataset.title || '';
+    dl.href = a.getAttribute('href');
+    dl.setAttribute('download', a.getAttribute('href').split('/').pop());
+    viewer.showModal();
+  }));
+  document.getElementById('viewer-close').addEventListener('click', () => viewer.close());
+  viewer.addEventListener('click', e => { if (e.target === viewer) viewer.close(); });
+  viewer.addEventListener('close', () => { if (opener) opener.focus(); });
 })();

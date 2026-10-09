@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portfolio-FVESHYTT</title>
-  <meta name="description" content="Fritz Vincent D. Estarez is a Network Administrator in Makati, Philippines. Network setup, Windows Server and Active Directory, VMware labs, and troubleshooting.">
+  <title>Fritz Vincent Estarez | Network Administrator in Manila</title>
+  <meta name="description" content="Fritz Vincent D. Estarez is a Network Administrator in Manila, Philippines. Network setup, Windows Server and Active Directory, VMware labs, and troubleshooting.">
   <meta name="author" content="Fritz Vincent D. Estarez">
   <meta name="theme-color" content="#050505">
   <!-- Replace https://fvestarez.netlify.app with your real URL before publishing -->
@@ -93,11 +93,22 @@
     <div class="bento">
       <article id="projects" class="box b-projects" aria-labelledby="h-projects">
         <h2 id="h-projects"><i class="ph ph-folder-open" aria-hidden="true"></i>Projects</h2>
-        <p class="sub">Hands-on builds from my home lab. Swap in your own details and screenshots.</p>
+        <p class="sub">Hands-on networking labs. Select a project to see its topology, configuration, results and downloads.</p>
         <div class="inner-grid">
-          <div class="inner"><img src="vmware-lab.svg" alt="Three virtual machines running inside a VMware host" width="640" height="360" loading="lazy"></h3><p>Virtual machines running Windows Server and Linux for testing Active Directory, DHCP, DNS and Group Policy safely.</p></div>
-          <div class="inner"><img src="network-sim.svg" alt="Network diagram with a router, two VLAN switches and four computers" width="640" height="360" loading="lazy"></h3><p>VLANs, routing and switching topologies built in GNS3 and Packet Tracer, then checked with Wireshark captures.</p></div>
-          <div class="inner"><img src="portfolio.svg" alt="Mockup of this portfolio website with a sidebar and cards" width="640" height="360" loading="lazy"></h3><p>Vibe-coded with plain HTML, CSS and JavaScript to learn how websites are built and found on search engines.</p></div>
+          <article class="inner project">
+            <img src="projects/3-switch-topology.svg" alt="Diagram of a router, a core switch, two access switches and six department computers" width="960" height="560" loading="lazy">
+            <h3><a class="stretch" href="three-switch-vlan.html">3-Switch Hierarchical VLAN Network</a></h3>
+            <p>Six department VLANs across a core and two access switches, with inter-VLAN routing on a router.</p>
+            <ul class="tags"><li>VLANs</li><li>Trunking</li><li>Router-on-a-Stick</li></ul>
+            <span class="more">View project<i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+          </article>
+          <article class="inner project">
+            <img src="network-sim.svg" alt="Diagram of a router connected to two switches with two VLANs and four computers" width="640" height="360" loading="lazy">
+            <h3><a class="stretch" href="vlan-trunking.html">VLAN Trunking and Router-on-a-Stick Lab</a></h3>
+            <p>Two switches and two VLANs joined by 802.1Q trunks, with a router connecting the VLANs.</p>
+            <ul class="tags"><li>VLANs</li><li>802.1Q</li><li>Packet Tracer</li></ul>
+            <span class="more">View project<i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+          </article>
         </div>
       </article>
 
@@ -123,13 +134,20 @@
       </article>
 
 
-      <article class="box solid b-cert" aria-labelledby="h-cert">
-        <h2 id="h-cert"><i class="ph ph-shield-check" aria-hidden="true"></i>Certifications</h2>
-        <ul class="certs">
-          <li><img src="isc2-cc.svg" alt="ISC2 Certified in Cybersecurity badge" width="88" height="88"><span>ISC2 Certified in Cybersecurity (CC), Aug 2025</span></li>
-          <li><img src="microsoft-security.svg" alt="Microsoft cybersecurity course badge" width="88" height="88"><span>Microsoft cybersecurity: security, compliance and identity fundamentals, Oct 2025</span></li>
-          <li><img src="cisco-netacad.svg" alt="Cisco Networking Academy badge" width="88" height="88"><span>Cisco Networking Academy: network addressing and basic troubleshooting, Jun 2024</span></li>
+      <article class="box solid b-cert project" aria-labelledby="h-cert">
+        <h2 id="h-cert"><i class="ph ph-shield-check" aria-hidden="true"></i><a class="stretch" href="certificates.html">Certifications</a></h2>
+        <div class="thumbs">
+          <img src="certificates/python-essentials-1-thumb.jpg" alt="Python Essentials 1 certificate" width="620" height="421" loading="lazy">
+          <img src="certificates/microsoft-cybersecurity-tesda-thumb.jpg" alt="Microsoft cybersecurity course certificate from TESDA" width="620" height="438" loading="lazy">
+          <img src="certificates/networking-basics-thumb.jpg" alt="Networking Basics certificate" width="620" height="419" loading="lazy">
+        </div>
+        <ul class="plain">
+          <li>Python Essentials 1, Cisco Networking Academy, Nov 2025</li>
+          <li>Microsoft cybersecurity: security, compliance and identity fundamentals, TESDA, Oct 2025</li>
+          <li>ISC2 Certified in Cybersecurity (CC), Aug 2025</li>
+          <li>Network Defense and Networking Basics, Cisco Networking Academy, Aug 2025</li>
         </ul>
+        <span class="more">View all 7 credentials<i class="ph ph-arrow-right" aria-hidden="true"></i></span>
       </article>
 
       <article id="contact" class="box b-contact" aria-labelledby="h-contact">

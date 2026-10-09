@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3-Switch Hierarchical VLAN Network | Fritz Vincent Estarez</title>
+  <meta name="description" content="Cisco Packet Tracer lab: six department VLANs across a core and two access switches, with inter-VLAN routing using router-on-a-stick. Topology, configuration and downloads.">
+  <meta name="author" content="Fritz Vincent D. Estarez">
+  <meta name="theme-color" content="#050505">
+  <link rel="canonical" href="https://fvestarez.netlify.app/three-switch-vlan.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="3-Switch Hierarchical VLAN Network | Fritz Vincent Estarez">
+  <meta property="og:description" content="Cisco Packet Tracer lab: six department VLANs across a core and two access switches, with inter-VLAN routing using router-on-a-stick. Topology, configuration and downloads.">
+  <meta property="og:url" content="https://fvestarez.netlify.app/three-switch-vlan.html">
+  <meta property="og:image" content="https://fvestarez.netlify.app/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050505'/%3E%3Ctext x='32' y='43' font-size='30' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='%23D7FFE0'%3EFE%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
+  <script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "CreativeWork",
+   "name": "3-Switch Hierarchical VLAN Network",
+   "description": "Cisco Packet Tracer lab: six department VLANs across a core and two access switches, with inter-VLAN routing using router-on-a-stick. Topology, configuration and downloads.",
+   "url": "https://fvestarez.netlify.app/three-switch-vlan.html",
+   "image": "https://fvestarez.netlify.app/projects/3-switch-topology.svg",
+   "author": {
+    "@type": "Person",
+    "name": "Fritz Vincent D. Estarez",
+    "url": "https://fvestarez.netlify.app/"
+   },
+   "keywords": "VLANs, 802.1Q trunking, Inter-VLAN routing, Router-on-a-Stick, Cisco Packet Tracer"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://fvestarez.netlify.app/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Projects",
+     "item": "https://fvestarez.netlify.app/#projects"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "3-Switch Hierarchical VLAN Network",
+     "item": "https://fvestarez.netlify.app/three-switch-vlan.html"
+    }
+   ]
+  }
+ ]
+}</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+
+  <aside class="sidebar">
+    <div class="profile">
+      <div class="avatar">
+        <span aria-hidden="true">FE</span>
+        <img src="profile.jpg" alt="Portrait of Fritz Vincent Estarez, Network Administrator" width="400" height="400" onerror="this.remove()">
+      </div>
+      <p class="name">Fritz Vincent Estarez</p>
+      <p class="role">Network Administrator</p>
+    </div>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="index.html#home"><i class="ph ph-house" aria-hidden="true"></i>Home</a></li>
+        <li><a href="index.html#projects" class="active" aria-current="page"><i class="ph ph-folder-open" aria-hidden="true"></i>Projects</a></li>
+        <li><a href="index.html#services"><i class="ph ph-wrench" aria-hidden="true"></i>Services</a></li>
+        <li><a href="index.html#about"><i class="ph ph-user" aria-hidden="true"></i>About</a></li>
+        <li><a href="index.html#contact"><i class="ph ph-envelope-simple" aria-hidden="true"></i>Contact</a></li>
+      </ul>
+    </nav>
+    <div class="textsize" role="group" aria-label="Text size">
+      <button type="button" id="smaller" aria-label="Make text smaller"><i class="ph ph-text-aa" aria-hidden="true"></i>-</button>
+      <button type="button" id="larger" aria-label="Make text larger"><i class="ph ph-text-aa" aria-hidden="true"></i>+</button>
+    </div>
+  </aside>
+
+  <aside class="rail" aria-hidden="true"><canvas id="net"></canvas></aside>
+
+  <main id="main" class="project-page">
+    <header class="page-head">
+      <a class="back" href="index.html#projects"><i class="ph ph-arrow-left" aria-hidden="true"></i>Back to projects</a>
+      <h1>3-Switch Hierarchical VLAN Network</h1>
+      <p class="lead">A core switch, two access switches and six department VLANs, with one router letting every department reach the others.</p>
+      <ul class="tags" aria-label="Skills used"><li>VLANs</li><li>802.1Q trunking</li><li>Inter-VLAN routing</li><li>Router-on-a-Stick</li><li>Cisco Packet Tracer</li></ul>
+      <div class="actions">
+        <a class="btn" href="#downloads"><i class="ph ph-download-simple" aria-hidden="true"></i>Download files</a>
+        <a class="btn outline" href="mailto:fvestarez22@gmail.com?subject=Question%20about%20the%203-Switch%20Hierarchical%20VLAN%20project"><i class="ph ph-envelope-simple" aria-hidden="true"></i>Email me about this project</a>
+      </div>
+      <div class="facts"><div class="fact"><span>Tool</span><strong>Cisco Packet Tracer</strong></div><div class="fact"><span>Devices</span><strong>1 router, 3 switches, 6 PCs</strong></div><div class="fact"><span>VLANs</span><strong>6 (10 to 60)</strong></div><div class="fact"><span>Routing</span><strong>Router-on-a-Stick</strong></div></div>
+    </header>
+
+    <div class="stack">
+<section class="box" id="overview" aria-labelledby="h-overview">
+  <h2 id="h-overview"><i class="ph ph-info" aria-hidden="true"></i>Overview</h2>
+  <p>This Cisco Packet Tracer lab splits six departments into their own VLANs across a core switch and two access switches. A router with sub-interfaces (router-on-a-stick) lets the departments talk to each other while staying separated on the switches.</p>
+  <ul class="plain-list">
+    <li>Switch01 is the core switch. Switch02 and Switch03 are access switches.</li>
+    <li>Six departments, each in its own VLAN: TSG, Accounting, PST, MIS, Sorting and Printing.</li>
+    <li>All links between switches, and from the core to the router, are 802.1Q trunks.</li>
+    <li>Router1 provides the default gateway for every VLAN through its sub-interfaces.</li>
+  </ul>
+</section>
+<section class="box" id="topology" aria-labelledby="h-topology">
+  <h2 id="h-topology"><i class="ph ph-graph" aria-hidden="true"></i>Topology</h2>
+  <figure class="figure"><img src="projects/3-switch-topology.svg" width="960" height="560" alt="Network diagram: Router1 connects to core Switch01, which connects to access Switch02 with TSG, MIS and PST computers, and access Switch03 with Printing, Sorting and Accounting computers, each in its own VLAN.">
+  <figcaption>Router1 connects to Switch01 (core). Switch02 serves VLANs 10, 40 and 30. Switch03 serves VLANs 60, 50 and 20.</figcaption></figure>
+</section>
+<section class="box" id="vlan-plan" aria-labelledby="h-vlan-plan">
+  <h2 id="h-vlan-plan"><i class="ph ph-table" aria-hidden="true"></i>VLAN plan</h2>
+  <div class="tablewrap" tabindex="0" role="region" aria-label="VLAN plan with department, network and default gateway"><table><caption>VLAN plan with department, network and default gateway</caption><thead><tr><th scope="col">VLAN ID</th><th scope="col">Department</th><th scope="col">Network</th><th scope="col">Gateway</th></tr></thead><tbody><tr><td>10</td><td>TSG</td><td>192.168.10.0/24</td><td>192.168.10.1</td></tr><tr><td>20</td><td>ACCOUNTING</td><td>192.168.20.0/24</td><td>192.168.20.1</td></tr><tr><td>30</td><td>PST</td><td>192.168.30.0/24</td><td>192.168.30.1</td></tr><tr><td>40</td><td>MIS</td><td>192.168.40.0/24</td><td>192.168.40.1</td></tr><tr><td>50</td><td>SORTING</td><td>192.168.50.0/24</td><td>192.168.50.1</td></tr><tr><td>60</td><td>PRINTING</td><td>192.168.60.0/24</td><td>192.168.60.1</td></tr></tbody></table></div><p class="note">Example PC addressing: Accounting PC 192.168.20.2, Sorting PC 192.168.50.2, Printing PC 192.168.60.2, all with mask 255.255.255.0 and the gateway of their own VLAN.</p>
+</section>
+<section class="box" id="configuration" aria-labelledby="h-configuration">
+  <h2 id="h-configuration"><i class="ph ph-terminal-window" aria-hidden="true"></i>Configuration</h2>
+  <h3>Switch01 (core): VLANs and trunk ports</h3>
+<pre tabindex="0" aria-label="Switch01 (core): VLANs and trunk ports commands"><code>enable
+configure terminal
+vlan 10
+ name TSG
+vlan 20
+ name ACCOUNTING
+vlan 30
+ name PST
+vlan 40
+ name MIS
+vlan 50
+ name SORTING
+vlan 60
+ name PRINTING
+
+interface gi0/1
+ switchport mode trunk
+interface gi0/2
+ switchport mode trunk
+interface gi0/3
+ switchport mode trunk
+end</code></pre><h3>Access switch example: PC ports and uplink trunk</h3>
+<pre tabindex="0" aria-label="Access switch example: PC ports and uplink trunk commands"><code>configure terminal
+interface fa0/1
+ switchport mode access
+ switchport access vlan 60
+interface fa0/2
+ switchport mode access
+ switchport access vlan 50
+interface fa0/3
+ switchport mode access
+ switchport access vlan 20
+interface gi0/1
+ switchport mode trunk
+end</code></pre><h3>Router1: router-on-a-stick sub-interfaces</h3>
+<pre tabindex="0" aria-label="Router1: router-on-a-stick sub-interfaces commands"><code>enable
+configure terminal
+interface g0/0/0
+ no shutdown
+interface g0/0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+interface g0/0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+interface g0/0/0.30
+ encapsulation dot1Q 30
+ ip address 192.168.30.1 255.255.255.0
+interface g0/0/0.40
+ encapsulation dot1Q 40
+ ip address 192.168.40.1 255.255.255.0
+interface g0/0/0.50
+ encapsulation dot1Q 50
+ ip address 192.168.50.1 255.255.255.0
+interface g0/0/0.60
+ encapsulation dot1Q 60
+ ip address 192.168.60.1 255.255.255.0
+end</code></pre>
+</section>
+<section class="box" id="results" aria-labelledby="h-results">
+  <h2 id="h-results"><i class="ph ph-check-circle" aria-hidden="true"></i>Verification and results</h2>
+  <p>I checked each layer with these commands, then tested pings between departments.</p>
+  <ul class="plain-list">
+    <li><code>show vlan brief</code> lists the VLANs and the ports in each one.</li>
+    <li><code>show interfaces trunk</code> shows the trunks as <em>trunking</em> and carrying VLANs 1, 10, 20, 30, 40, 50 and 60.</li>
+    <li><code>show ip interface brief</code> shows Gi0/0/0.10 to Gi0/0/0.60 as up/up.</li>
+    <li>Pings from each PC to its own gateway, then to PCs in other VLANs, were successful.</li>
+  </ul>
+  <h3>Final checklist</h3>
+  <ul class="checks">
+    <li>VLANs created</li><li>PC ports assigned to VLANs</li><li>Switch-to-switch links set as trunks</li>
+    <li>Switch-to-router link set as a trunk</li><li>Router sub-interfaces created</li><li>PC IP addresses and gateways configured</li>
+    <li>Ping tests successful</li>
+  </ul>
+</section>
+<section class="box" id="problems" aria-labelledby="h-problems">
+  <h2 id="h-problems"><i class="ph ph-bug" aria-hidden="true"></i>Problems I found and how I fixed them</h2>
+  <h3>1. Invalid interface type and number</h3>
+  <p><strong>What happened:</strong> I entered <code>interface fa0/0.10</code> on the router and got an error.<br>
+  <strong>Cause:</strong> the router has no FastEthernet 0/0 interface.<br>
+  <strong>Fix:</strong> use the real interface name, <code>interface gi0/0/0.10</code>.</p>
+  <h3>2. VLANs existed but no ports were assigned</h3>
+  <p><strong>What happened:</strong> on Switch03, VLANs 20, 50 and 60 showed as active but no ports were listed under them.<br>
+  <strong>Fix:</strong> assign each PC port with <code>switchport access vlan &lt;number&gt;</code>, then check again with <code>show vlan brief</code>.</p>
+</section>
+<section class="box" id="learned" aria-labelledby="h-learned">
+  <h2 id="h-learned"><i class="ph ph-lightbulb" aria-hidden="true"></i>What I learned</h2>
+  <p>VLANs separate networks, trunks carry multiple VLANs between devices, and router sub-interfaces let different VLANs communicate.</p>
+  <ul class="plain-list">
+    <li>VLANs improve security and cut broadcast traffic.</li>
+    <li>They keep departments separate and make the network easier to manage.</li>
+    <li>When something fails, check VLANs, then trunks, then the router, in that order.</li>
+  </ul>
+</section>
+<section class="box" id="downloads" aria-labelledby="h-downloads">
+  <h2 id="h-downloads"><i class="ph ph-download-simple" aria-hidden="true"></i>Downloads</h2>
+  <p>Take the lab notes with you. The Packet Tracer file opens in Cisco Packet Tracer.</p><ul class="dl"><li><a href="projects/3-switch-hierarchical-vlan-topology.docx" download><i class="ph ph-file-doc" aria-hidden="true"></i><span><strong>Topology and configuration (Word)</strong><small>3-switch-hierarchical-vlan-topology.docx · 19 KB</small></span></a></li><li><a href="projects/3-switch-hierarchical-vlan-topology.pdf" download><i class="ph ph-file-pdf" aria-hidden="true"></i><span><strong>Topology and configuration (PDF)</strong><small>3-switch-hierarchical-vlan-topology.pdf · 90 KB</small></span></a></li><li><a href="projects/3-switch-vlan-configuration-notes.docx" download><i class="ph ph-file-doc" aria-hidden="true"></i><span><strong>Lab notes and troubleshooting (Word)</strong><small>3-switch-vlan-configuration-notes.docx · 21 KB</small></span></a></li><li><a href="projects/3-switch-vlan-configuration-notes.pdf" download><i class="ph ph-file-pdf" aria-hidden="true"></i><span><strong>Lab notes and troubleshooting (PDF)</strong><small>3-switch-vlan-configuration-notes.pdf · 112 KB</small></span></a></li><li><a href="projects/3-switch-hierarchical-vlan.pkt" download><i class="ph ph-hard-drive" aria-hidden="true"></i><span><strong>Packet Tracer lab file (.pkt)</strong><small>3-switch-hierarchical-vlan.pkt · 53 KB</small></span></a></li></ul>
+</section>
+    </div>
+
+    <nav class="pager" aria-label="More projects"><a class="next" href="vlan-trunking.html">Next: VLAN Trunking Lab<i class="ph ph-arrow-right" aria-hidden="true"></i></a></nav>
+    <footer><p>&copy; 2026 Fritz Vincent D. Estarez</p></footer>
+  </main>
+  <script src="script.js" defer></script>
+</body>
+</html>
