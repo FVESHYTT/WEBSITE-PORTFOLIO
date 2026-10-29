@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fritz Vincent Estarez | Network Administrator in Manila</title>
-  <meta name="description" content="Fritz Vincent D. Estarez is a Network Administrator in Manila, Philippines. Network setup, Windows Server and Active Directory, VMware labs, and troubleshooting.">
+  <title>Fritz Vincent Estarez | Jr. Network Administrator in Makati</title>
+  <meta name="description" content="Fritz Vincent D. Estarez, Jr. Network Administrator in Makati, Philippines. VLANs, DHCP, DNS, VPN, Windows Server, Active Directory and network troubleshooting.">
   <meta name="author" content="Fritz Vincent D. Estarez">
   <meta name="theme-color" content="#070E1B">
-  <!-- Replace https://fvestarez.netlify.app with your real URL before publishing -->
   <link rel="canonical" href="https://fvestarez.netlify.app/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Fritz Vincent Estarez | Network Administrator">
-  <meta property="og:description" content="Networks that stay up. Windows Server, Active Directory, VMware and troubleshooting, based in Manila.">
+  <meta property="og:title" content="Fritz Vincent Estarez | Jr. Network Administrator in Makati">
+  <meta property="og:description" content="Networks that stay up. Jr. Network Administrator in Makati: Windows Server, Active Directory, VLANs and troubleshooting.">
   <meta property="og:url" content="https://fvestarez.netlify.app/">
   <meta property="og:image" content="https://fvestarez.netlify.app/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -26,12 +25,14 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Fritz Vincent D. Estarez",
-    "jobTitle": "Network Administrator",
+    "jobTitle": "Jr. Network Administrator",
     "url": "https://fvestarez.netlify.app/",
     "email": "mailto:fvestarez22@gmail.com",
-    "address": { "@type": "PostalAddress", "addressLocality": "Manila", "addressCountry": "PH" },
+    "worksFor": { "@type": "Organization", "name": "Xytron International" },
+    "workLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Makati", "addressCountry": "PH" } },
+    "homeLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Tondo, Manila", "addressCountry": "PH" } },
     "alumniOf": "Universidad de Manila",
-    "knowsAbout": ["TCP/IP", "Routing and Switching", "Active Directory", "Windows Server", "VMware", "Network Security"]
+    "knowsAbout": ["TCP/IP", "Subnetting", "Routing and Switching", "VLANs", "DNS", "DHCP", "VPN", "Windows Server", "Active Directory", "Group Policy", "VMware", "Hyper-V", "Network Troubleshooting", "Network Security"]
   }
   </script>
 </head>
@@ -44,10 +45,10 @@
     <div class="profile">
       <div class="avatar">
         <span aria-hidden="true">FE</span>
-        <img src="profile.jpg" alt="Portrait of Fritz Vincent Estarez, Network Administrator" width="400" height="400" onerror="this.remove()">
+        <img src="profile.jpg" alt="Portrait of Fritz Vincent Estarez, Jr. Network Administrator" width="400" height="400" onerror="this.remove()">
       </div>
       <p class="name">Fritz Vincent Estarez</p>
-      <p class="role">Network Administrator</p>
+      <p class="role">Jr. Network Administrator</p>
     </div>
 
     <nav aria-label="Main">
@@ -55,6 +56,7 @@
         <li><a href="#home" class="active"><i class="ph ph-house" aria-hidden="true"></i>Home</a></li>
         <li><a href="#projects"><i class="ph ph-folder-open" aria-hidden="true"></i>Projects</a></li>
         <li><a href="#services"><i class="ph ph-wrench" aria-hidden="true"></i>Services</a></li>
+        <li><a href="#skills"><i class="ph ph-gear-six" aria-hidden="true"></i>Skills</a></li>
         <li><a href="#about"><i class="ph ph-user" aria-hidden="true"></i>About</a></li>
         <li><a href="#contact"><i class="ph ph-envelope-simple" aria-hidden="true"></i>Contact</a></li>
       </ul>
@@ -64,8 +66,14 @@
   <main id="main">
     <section id="home" class="hero" aria-labelledby="h1">
       <h1 id="h1">Networks that <span class="hl">stay up.</span></h1>
-      <p class="lead">I'm Fritz, a network administrator in Manila. I keep routers, servers and user accounts running, and I build VMware labs to keep learning.</p>
+      <p class="lead">I'm Fritz, a junior network administrator in Makati. I keep routers, switches, servers and user accounts running for a 60-user site, and I build VMware labs to keep learning.</p>
       <a class="btn" href="#contact"><i class="ph ph-paper-plane-tilt" aria-hidden="true"></i>Get in touch</a>
+
+      <div class="facts" role="group" aria-label="At a glance">
+        <div class="fact"><span>On the job</span><strong>Since Dec 2025</strong></div>
+        <div class="fact"><span>Network supported</span><strong>60 users, 1 site</strong></div>
+        <div class="fact"><span>Tickets resolved</span><strong>About 20 a month</strong></div>
+      </div>
 
       <div class="marquee-wrap">
         <h2 class="marquee-title">Tools I work with</h2>
@@ -75,10 +83,14 @@
             <li><i class="ph ph-sparkle" aria-hidden="true"></i>Claude</li>
             <li><i class="ph ph-graph" aria-hidden="true"></i>Packet Tracer</li>
             <li><i class="ph ph-network" aria-hidden="true"></i>GNS3</li>
+            <li><i class="ph ph-radar" aria-hidden="true"></i>Nmap</li>
+            <li><i class="ph ph-cube" aria-hidden="true"></i>VMware</li>
             <li><i class="ph ph-magnifying-glass" aria-hidden="true"></i>Wireshark</li>
             <li><i class="ph ph-sparkle" aria-hidden="true"></i>Claude</li>
             <li><i class="ph ph-graph" aria-hidden="true"></i>Packet Tracer</li>
             <li><i class="ph ph-network" aria-hidden="true"></i>GNS3</li>
+            <li><i class="ph ph-radar" aria-hidden="true"></i>Nmap</li>
+            <li><i class="ph ph-cube" aria-hidden="true"></i>VMware</li>
           </ul>
         </div>
       </div>
@@ -110,21 +122,30 @@
         <h2 id="h-services"><i class="ph ph-wrench" aria-hidden="true"></i>Services</h2>
         <p class="sub">What I can help your team with.</p>
         <ul class="list">
-          <li><i class="ph ph-plugs-connected" aria-hidden="true"></i><div><h3>Network setup and support</h3><p>Install, configure and monitor routers, switches and servers.</p></div></li>
-          <li><i class="ph ph-users-three" aria-hidden="true"></i><div><h3>Windows Server and Active Directory</h3><p>User accounts, permissions, Group Policy and access control.</p></div></li>
-          <li><i class="ph ph-first-aid-kit" aria-hidden="true"></i><div><h3>Troubleshooting</h3><p>Hardware, software and network issues, solved and documented.</p></div></li>
-          <li><i class="ph ph-shield-check" aria-hidden="true"></i><div><h3>Security basics</h3><p>Access control, compliance and identity fundamentals.</p></div></li>
+          <li><i class="ph ph-plugs-connected" aria-hidden="true"></i><div><h3>Network setup and support</h3><p>Configure and maintain routers, switches, VLANs, DHCP, DNS and VPN, with clear documentation.</p></div></li>
+          <li><i class="ph ph-users-three" aria-hidden="true"></i><div><h3>Windows Server and Active Directory</h3><p>User accounts, group permissions and Group Policy, using least-privilege access.</p></div></li>
+          <li><i class="ph ph-first-aid-kit" aria-hidden="true"></i><div><h3>Troubleshooting</h3><p>Connectivity and performance issues solved with Wireshark and Nmap, about 20 tickets a month.</p></div></li>
+          <li><i class="ph ph-shield-check" aria-hidden="true"></i><div><h3>Security basics</h3><p>Access control, compliance and identity fundamentals, backed by ISC2 CC.</p></div></li>
         </ul>
+      </article>
+
+      <article id="skills" class="box b-skills" aria-labelledby="h-skills">
+        <h2 id="h-skills"><i class="ph ph-gear-six" aria-hidden="true"></i>Technical skills</h2>
+        <p class="sub">What I use day to day.</p>
+        <div class="inner-grid">
+          <div class="inner"><h3>Networking</h3><ul class="tags"><li>TCP/IP</li><li>Subnetting</li><li>Routing and switching</li><li>VLANs</li><li>DNS</li><li>DHCP</li><li>VPN</li></ul></div>
+          <div class="inner"><h3>Systems</h3><ul class="tags"><li>Windows 10/11</li><li>Windows Server</li><li>Active Directory</li><li>Group Policy</li></ul></div>
+          <div class="inner"><h3>Equipment and tools</h3><ul class="tags"><li>Cisco 1900 Series ISR</li><li>Cisco Catalyst 3850</li><li>Cisco SG350-28</li><li>SonicWall firewall</li><li>Wireshark</li><li>Nmap</li><li>Remote Desktop</li><li>TeamViewer</li></ul></div>
+          <div class="inner"><h3>Virtualization</h3><ul class="tags"><li>VMware</li><li>Hyper-V</li></ul></div>
+          <div class="inner"><h3>Scripting</h3><ul class="tags"><li>PowerShell</li><li>Python</li><li>Bash</li></ul></div>
+        </div>
       </article>
 
       <article id="about" class="box b-about" aria-labelledby="h-about">
         <h2 id="h-about"><i class="ph ph-user" aria-hidden="true"></i>About</h2>
-        <p>I'm a junior network administrator with a Bachelor of Science in Information Technology from Universidad de Manila, graduating as a consistent Dean's Lister. I care about reliable IT operations and keep growing my networking skills.</p>
-        <h3>Experience</h3>
-        <ul class="timeline">
-          <li><strong>Network Administrator, Xytron International</strong><span>Dec 2025 to Sept 2026</span></li>
-          <li><strong>Technical Engineer Intern, Micro Pacific Technology &amp; System Corp</strong><span>Jan 2025 to May 2025</span></li>
-        </ul>
+        <p>I'm a junior network administrator in Makati. I'm strongest at day-to-day troubleshooting, access control and keeping users connected, and I'm working toward CCNA, Network+ and A+.</p>
+        <h3>Education</h3>
+        <p><strong>Bachelor of Science in Information Technology</strong><br>Universidad de Manila, graduated July 2025<br>Dean's Lister, 2 semesters</p>
       </article>
 
 
@@ -140,15 +161,41 @@
           <li>Microsoft cybersecurity: security, compliance and identity fundamentals, TESDA, Oct 2025</li>
           <li>ISC2 Certified in Cybersecurity (CC), Aug 2025</li>
           <li>Network Defense and Networking Basics, Cisco Networking Academy, Aug 2025</li>
+          <li>In progress: Cisco CCNA, CompTIA Network+ and CompTIA A+</li>
         </ul>
         <span class="more">View all 7 credentials<i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+      </article>
+
+      <article class="box b-experience" aria-labelledby="h-experience">
+        <h2 id="h-experience"><i class="ph ph-briefcase" aria-hidden="true"></i>Experience</h2>
+        <div class="inner-grid">
+          <div class="inner">
+            <h3>Jr. Network Administrator</h3>
+            <p class="when">Xytron International · Dec 2025 to Present</p>
+            <ul class="plain-list">
+              <li>Administer a network of 60 users and 60 devices at one site: routers, switches, servers and workstations.</li>
+              <li>Configure and maintain VLANs, DHCP, DNS and VPN, and document layouts, IP addressing and device configurations.</li>
+              <li>Manage accounts, group permissions and access in Active Directory using least-privilege access.</li>
+              <li>Troubleshoot with Wireshark and Nmap, resolving about 20 tickets a month.</li>
+            </ul>
+          </div>
+          <div class="inner">
+            <h3>Technical Engineer Intern</h3>
+            <p class="when">Micro Pacific Technology &amp; System Corp · Jan 2025 to May 2025</p>
+            <ul class="plain-list">
+              <li>Troubleshot hardware, software and network issues alongside senior technical staff.</li>
+              <li>Kept inventory records and technical documentation, and set up PCs and laptops.</li>
+              <li>Presented technical findings and reports to the CTO.</li>
+            </ul>
+          </div>
+        </div>
       </article>
 
       <article id="contact" class="box b-contact" aria-labelledby="h-contact">
         <h2 id="h-contact"><i class="ph ph-envelope-simple" aria-hidden="true"></i>Contact</h2>
         <p class="sub">Email is the best way to reach me.</p>
         <a class="btn" href="mailto:fvestarez22@gmail.com"><i class="ph ph-envelope-simple" aria-hidden="true"></i>fvestarez22@gmail.com</a>
-        <p class="loc"><i class="ph ph-map-pin" aria-hidden="true"></i>Tondo, Manila, Philippines</p>
+        <p class="loc"><i class="ph ph-map-pin" aria-hidden="true"></i>Tondo, Manila · working in Makati, Philippines</p>
       </article>
     </div>
 

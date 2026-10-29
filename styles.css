@@ -288,3 +288,18 @@ dialog::backdrop{background:rgba(2,6,14,.88)}
 .sidebar nav a.active{background:var(--accent);color:var(--on-accent)}
 .sidebar nav a.active i{color:var(--on-accent)}
 @media (max-width:900px){.sidebar{background:#04080F;border-right:0}}
+
+/* Resume update */
+.b-skills{grid-column:span 12}
+.hero .facts{margin-top:1.75rem;max-width:860px}
+.b-skills .inner h3{margin-bottom:.4rem}
+.b-skills .tags{margin:.5rem 0 0}
+.timeline .plain-list{margin:.7rem 0 .4rem}
+.timeline>li{margin-bottom:.4rem}
+
+/* Experience box and balanced About / Certifications row */
+.b-experience{grid-column:span 12}
+.b-experience .inner h3{margin:0 0 .2rem}
+.b-experience .when{color:var(--muted);margin-bottom:.4rem}
+.b-about h3{margin:1.4rem 0 .4rem}
+.b-about p{margin-bottom:.6rem}
