@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><title>Admin | Xytron TSG</title>
+<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/admin.css"></head>
+<body>
+<header><h1><span>XYTRON</span> TSG Admin Console</h1><button id="outBtn" class="btn dark hidden" onclick="logout()">Log out</button></header>
+<div style="background:#1F2937;color:#FFF7ED;padding:8px 28px;font-size:13px;border-bottom:1px solid #F97316;display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+<span><b style="color:#F97316">Live demo.</b> Everything you enter stays in your own browser. Nothing is sent to a server.</span>
+<a href="https://fvewebport.vercel.app/" style="color:#F97316">Back to portfolio</a>
+<button id="resetDemo" type="button" style="background:none;border:1px solid #F97316;color:#FFF7ED;border-radius:4px;padding:3px 10px;cursor:pointer">Reset demo data</button></div>
+<main>
+<div id="loginView" class="narrow" style="margin:auto"><div class="card"><h2>Admin Sign In</h2>
+<label>Email</label><input id="lEmail" type="email"><label>Password</label><input id="lPass" type="password">
+<button class="btn" onclick="doLogin()">Sign In</button>
+<p class="warn">Demo account: <b>demo@xytron.com</b> / <b>demo1234</b>. This is a demo login with sample data only.</p></div></div>
+
+<div id="dash" class="hidden">
+ <div class="alert hidden" id="alertBar"><span id="alertText"></span><button class="btn dark" id="alertGo" type="button">Review</button></div>
+ <div class="tabs"><button class="tab on" data-tab="tTickets">Tickets</button><button class="tab" data-tab="tStats">Statistics</button><button class="tab" data-tab="tKb">Knowledge Base</button><button class="tab" data-tab="tAdmins">Admins</button><button class="tab" data-tab="tReports">Reports</button></div>
+
+ <div id="tTickets" class="pane">
+  <div class="card hidden" id="fuCard"><h2>Follow-up requests (<span id="fuCount">0</span>)</h2>
+   <p class="muted">Users who have not heard back. Check the ticket, then mark the follow-up handled.</p>
+   <div style="overflow-x:auto"><table><thead><tr><th>Reference</th><th>Ticket</th><th>Note</th><th>From</th><th>Requested</th><th>Action</th></tr></thead><tbody id="fuRows"></tbody></table></div></div>
+  <div class="stats"><div class="stat">Total Tickets<b id="sTotal">0</b></div><div class="stat hot">Unresolved<b id="sOpen">0</b></div>
+   <div class="stat">In Progress<b id="sProg">0</b></div><div class="stat">Resolved<b id="sDone">0</b></div></div>
+  <div class="card"><h2>Ticket Registry</h2>
+   <div class="filters"><input id="q" placeholder="Search tickets..."><select id="fltSev"></select><select id="fltDept"></select></div>
+   <div style="overflow-x:auto"><table><thead><tr><th>Name</th><th>Dept</th><th>Category</th><th>Severity</th><th>Details</th><th>Submitted</th><th>Assigned to</th><th>Action</th></tr></thead><tbody id="rows"></tbody></table></div>
+  </div>
+  <div class="card hidden" id="rmCard"><h2>Removed tickets (<span id="rmCount">0</span>)</h2>
+   <p class="muted">Hidden from statistics, the knowledge base and reports. Restore a ticket, or delete it forever.</p>
+   <div style="overflow-x:auto"><table><thead><tr><th>Name</th><th>Dept</th><th>Details</th><th>Submitted</th><th>Action</th></tr></thead><tbody id="rmRows"></tbody></table></div></div>
+ </div>
+
+ <div id="tAdmins" class="pane hidden"><div class="card"><h2>Network Admins</h2>
+  <p class="muted">People who can be assigned tickets and marked as resolvers. These are names for tracking, not logins.</p>
+  <div style="overflow-x:auto"><table><thead><tr><th>Name (editable)</th><th>Open tickets</th><th>Resolved</th><th>Action</th></tr></thead><tbody id="adList"></tbody></table></div>
+  <div class="filters" style="margin-top:16px"><input id="adNew" maxlength="60" placeholder="New admin full name"><button class="btn" style="margin:0;white-space:nowrap" id="adAdd">+ Add admin</button></div></div></div>
+
+ <div id="tReports" class="pane hidden"><div class="card rctl"><h2>Reports</h2>
+  <p class="muted">Pick a period (leave empty for all time), then download the ticket data for Excel or print the statistics report as a PDF.</p>
+  <div class="filters" style="margin-top:12px"><div><label>From</label><input id="rFrom" type="date"></div><div><label>To</label><input id="rTo" type="date"></div></div>
+  <div class="row" style="justify-content:flex-start;margin-top:14px"><button class="btn" style="margin:0" id="rCsv">Download Excel file (.csv)</button><button class="btn ghost" style="margin:0" id="rPrint">Print / Save as PDF</button></div></div>
+  <div id="rpt" class="card"></div></div>
+
+ <div id="tStats" class="pane hidden"></div>
+
+ <div id="tKb" class="pane hidden">
+  <div class="card"><h2>Troubleshooting Knowledge Base</h2>
+   <p class="muted">Every resolved ticket's documented root cause and steps. Search it before troubleshooting a new issue.</p>
+   <div class="filters" style="margin-top:12px"><input id="kbQ" placeholder="Search issue, cause or steps..."><select id="kbCat"></select></div></div>
+  <div id="kbList"></div>
+ </div>
+</div>
+</main>
+
+<div id="modal" class="modal hidden"><div class="card"><h2>Resolve ticket</h2><p id="mInfo" class="muted"></p>
+ <label>Resolved by</label><select id="mWho"></select>
+ <label>Root cause</label><input id="mCause" maxlength="200" placeholder="e.g. Faulty LAN cable at the patch panel">
+ <label>Troubleshooting steps taken</label><textarea id="mSteps" maxlength="1500" placeholder="1. Pinged the router - no reply&#10;2. Checked the cable..."></textarea>
+ <div class="row"><button class="btn ghost" id="mCancel">Cancel</button><button class="btn" id="mSave">Save &amp; resolve</button></div></div></div>
+<div id="toast" class="hidden"></div>
+<script>document.getElementById("resetDemo").onclick=()=>{["xyd_tickets","xyd_admins","xyd_follow"].forEach(k=>localStorage.removeItem(k));sessionStorage.removeItem("xyd_admin");location.reload();}</script>
+<script type="module" src="js/admin.js"></script></body></html>
