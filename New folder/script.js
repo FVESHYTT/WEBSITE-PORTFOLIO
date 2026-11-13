@@ -1,26 +1,3 @@
-// Marquee pause (WCAG: moving content must be pausable)
-const marquee = document.getElementById('marquee');
-const pause = document.getElementById('pause');
-if (pause && marquee) pause.addEventListener('click', () => {
-  const paused = marquee.classList.toggle('paused');
-  window.animPaused = paused;
-  pause.setAttribute('aria-pressed', paused);
-  pause.querySelector('span').textContent = paused ? 'Resume animations' : 'Pause animations';
-  pause.querySelector('i').className = paused ? 'ph ph-play' : 'ph ph-pause';
-});
-
-// Text size controls (remembered between visits)
-const root = document.documentElement;
-let size = 112.5;
-try { size = parseFloat(localStorage.getItem('textSize')) || size; } catch (e) {}
-const apply = () => {
-  root.style.fontSize = size + '%';
-  try { localStorage.setItem('textSize', size); } catch (e) {}
-};
-apply();
-document.getElementById('larger').addEventListener('click', () => { size = Math.min(size + 12.5, 175); apply(); });
-document.getElementById('smaller').addEventListener('click', () => { size = Math.max(size - 12.5, 100); apply(); });
-
 // Sidebar highlight: follows scrolling, but a clicked link wins until you scroll yourself
 const links = [...document.querySelectorAll('nav a[href^="#"]')];
 const targets = [...document.querySelectorAll('main section[id], main article[id]')];
@@ -57,14 +34,27 @@ window.addEventListener('resize', setActive);
 setActive();
 }
 
-// Decorative network canvas: falling 0s and 1s plus drifting network nodes
-(function () {
-  const cv = document.getElementById('net');
+// Decorative network animation: falling 0s and 1s plus drifting network nodes.
+// Used in the sidebar (softer, so the menu stays easy to read) and in the wide-screen right panel.
+function startNet(id, dim, avoid) {
+  const cv = document.getElementById(id);
   if (!cv) return;
   const ctx = cv.getContext('2d');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const C = '215,255,224', S = 16, TAIL = 14;
-  let w, h, cols, heads, speeds, nodes;
+  const C = '196,212,240', HEAD = '52,211,153', S = 16, TAIL = 14;
+  let w, h, cols, heads, speeds, nodes, zones = [];
+
+  // Areas of text that the animation should stay quiet behind
+  function measure() {
+    zones = [];
+    if (!avoid) return;
+    const cr = cv.getBoundingClientRect();
+    document.querySelectorAll(avoid).forEach(el => {
+      const r = el.getBoundingClientRect();
+      zones.push({ x1: r.left - cr.left - 8, y1: r.top - cr.top - 8, x2: r.right - cr.left + 8, y2: r.bottom - cr.top + 8 });
+    });
+  }
+  const quiet = (x1, y1, x2, y2) => zones.some(z => x1 < z.x2 && x2 > z.x1 && y1 < z.y2 && y2 > z.y1) ? 0.12 : 1;
 
   function init() {
     const dpr = window.devicePixelRatio || 1;
@@ -72,10 +62,11 @@ setActive();
     if (!w || !h) return;
     cv.width = w * dpr; cv.height = h * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    measure();
     cols = Math.floor(w / S);
     heads = Array.from({ length: cols }, () => Math.random() * (h / S + TAIL));
     speeds = Array.from({ length: cols }, () => 0.08 + Math.random() * 0.22);
-    nodes = Array.from({ length: Math.max(8, Math.round(w * h / 28000)) }, () => ({
+    nodes = Array.from({ length: Math.max(7, Math.round(w * h / 28000)) }, () => ({
       x: Math.random() * w, y: Math.random() * h,
       vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35
     }));
@@ -91,7 +82,10 @@ setActive();
         const row = head - k;
         if (row < 0 || row * S > h) continue;
         const bit = (((i * 73856093) ^ (row * 19349663)) >> 3) & 1;
-        ctx.fillStyle = 'rgba(' + C + ',' + (k === 0 ? 0.9 : 0.3 * (1 - k / TAIL)) + ')';
+        const q = quiet(i * S, row * S - S, i * S + S, row * S);
+        ctx.fillStyle = k === 0
+          ? 'rgba(' + HEAD + ',' + (0.95 * dim * q) + ')'
+          : 'rgba(' + C + ',' + (0.34 * dim * q * (1 - k / TAIL)) + ')';
         ctx.fillText(bit, i * S, row * S);
       }
     }
@@ -100,13 +94,13 @@ setActive();
       for (let j = i + 1; j < nodes.length; j++) {
         const b = nodes[j], d = Math.hypot(a.x - b.x, a.y - b.y);
         if (d < 190) {
-          ctx.strokeStyle = 'rgba(' + C + ',' + (0.55 * (1 - d / 190)) + ')';
+          ctx.strokeStyle = 'rgba(' + C + ',' + (0.5 * dim * (1 - d / 190)) + ')';
           ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
         }
       }
     });
     nodes.forEach(n => {
-      ctx.fillStyle = '#050505'; ctx.strokeStyle = 'rgb(' + C + ')'; ctx.lineWidth = 2;
+      ctx.fillStyle = '#04080F'; ctx.strokeStyle = 'rgba(' + HEAD + ',' + ((0.35 + 0.65 * dim) * quiet(n.x - 7, n.y - 7, n.x + 7, n.y + 7)) + ')'; ctx.lineWidth = 2;
       ctx.beginPath(); ctx.arc(n.x, n.y, 5, 0, 7); ctx.fill(); ctx.stroke();
     });
   }
@@ -126,14 +120,16 @@ setActive();
   let last = 0;
   function loop(t) {
     requestAnimationFrame(loop);
-    if (window.animPaused || t - last < 33) return;
+    if (document.hidden || t - last < 33) return;
     last = t; step(); draw();
   }
 
   new ResizeObserver(init).observe(cv);
   init();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(init);
   if (!reduce) requestAnimationFrame(loop);
-})();
+}
+startNet('net-side', 0.85, '.sidebar .name, .sidebar .role, .sidebar nav a');
 
 // Certificate viewer (uses the built-in dialog element; links still work without JavaScript)
 (function () {
