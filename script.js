@@ -14,7 +14,7 @@ function show(id) {
 
 function setActive() {
   if (locked) return;
-  const line = window.innerHeight * 0.35;
+  const line = window.innerHeight * 0.6;
   let current = targets[0];
   targets.forEach(t => { if (t.getBoundingClientRect().top <= line) current = t; });
   if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
@@ -180,4 +180,24 @@ startNet('net-side', 0.85, '.sidebar .name, .sidebar .role, .sidebar nav a');
   document.getElementById('viewer-close').addEventListener('click', () => viewer.close());
   viewer.addEventListener('click', e => { if (e.target === viewer) viewer.close(); });
   viewer.addEventListener('close', () => { if (opener) opener.focus(); });
+})();
+
+// Copy the email address (works even when no email app is installed)
+(function () {
+  const btn = document.getElementById('copyEmail');
+  if (!btn) return;
+  const msg = document.getElementById('copyMsg');
+  const email = 'fvestarez22@gmail.com';
+  const say = t => { msg.textContent = t; setTimeout(() => { msg.textContent = ''; }, 3500); };
+  btn.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(email); say('Email address copied'); }
+    catch (e) {
+      const ta = document.createElement('textarea');
+      ta.value = email; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); say('Email address copied'); }
+      catch (err) { say('Select the address above and copy it'); }
+      ta.remove();
+    }
+  });
 })();
