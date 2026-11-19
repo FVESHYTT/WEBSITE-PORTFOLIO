@@ -34,6 +34,34 @@ window.addEventListener('resize', setActive);
 setActive();
 }
 
+// Reliable jumps to a section. The page height can change while images and fonts load,
+// so after a jump we re-align once or twice, unless the visitor has started scrolling.
+let userMoved = false;
+['wheel', 'touchmove', 'keydown', 'mousedown'].forEach(ev =>
+  window.addEventListener(ev, () => { userMoved = true; }, { passive: true }));
+const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const jump = (el, smooth) => el.scrollIntoView({ behavior: smooth && !calm ? 'smooth' : 'auto', block: 'start' });
+const settle = el => [700, 1400].forEach(ms => setTimeout(() => { if (!userMoved) jump(el, false); }, ms));
+
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  const el = document.getElementById(a.getAttribute('href').slice(1));
+  if (!el) return;
+  e.preventDefault();
+  userMoved = false;
+  try { history.replaceState(null, '', '#' + el.id); } catch (err) {}
+  jump(el, true);
+  settle(el);
+}));
+
+// Arriving from another page with a link like index.html#contact
+function toHash() {
+  if (!location.hash || userMoved) return;
+  const el = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if (el) jump(el, false);
+}
+window.addEventListener('load', toHash);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(toHash);
+
 // Decorative network animation: falling 0s and 1s plus drifting network nodes.
 // Used in the sidebar (softer, so the menu stays easy to read) and in the wide-screen right panel.
 function startNet(id, dim, avoid) {
